@@ -3,7 +3,10 @@
     <modules>
         <CosmoCommerce_Sns>
             <active>true</active>
-            <codePool>local</codePool>
+            <codePool>community</codePool>
+            <depends>
+                <CosmoCommerce_Updates/>
+            </depends>
         </CosmoCommerce_Sns>
     </modules>
 </config> 
