@@ -1,0 +1,24 @@
+
+<div class="account-login">
+    <div class="page-title">
+        <h1>用户登录</h1> 
+    </div>
+	
+
+	<?php 
+	if ($token) {
+		$_SESSION['token'] = $token;
+		setcookie( 'weibojs_'.$snsweibo->client_id, http_build_query($token) );
+	?>
+	授权完成
+	<?php
+	} else {
+	?>
+	授权失败。
+	<?php
+	}
+	?>
+	
+	
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+</div>

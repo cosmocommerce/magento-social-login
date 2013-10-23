@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <CosmoCommerce_Sns>
+            <active>true</active>
+            <codePool>local</codePool>
+        </CosmoCommerce_Sns>
+    </modules>
+</config> 

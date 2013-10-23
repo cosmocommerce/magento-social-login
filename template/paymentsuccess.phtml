@@ -1,0 +1,47 @@
+payment success 您的付款成功了success
+
+
+
+192.168.30.250
+mao
+aaaaaaaa
+
+
+vagrant box add oe61 oe61.box
+vagrant init oe61
+vagrant up
+
+
+bzr branch bzr+ssh://mao:gongyuan@192.168.30.250/opt/sharedfolders/openerp6.1/oepnerp-server 
+
+git clone ssh://mao:gongyuan@192.168.30.250/opt/sharedfolders/checked_out/applied 
+
+cn.excec.biz
+
+database update
+sudo -u openerp openerp-server --update=all --database=sencon --config=/etc/openerp-server.conf
+
+su postgres
+然后创建数据库:
+createdb -E unicode applied owner="openerp"
+createdb -E unicode sencon owner="openerp"
+然后从备份的sql文件中导入数据:
+psql -d sencon -f sencon.sql
+psql -d applied -f applied.sql
+pgadmin 
+
+rvm:
+source /usr/local/rvm/scripts/rvm
+
+
+
+
+port:5435
+30.250 vagrant:vagrant
+
+openerp
+applied:
+
+sencon: LNiebbm  oe.sencon.asia
+applied: MPiall  erp.appliedwine.com
+

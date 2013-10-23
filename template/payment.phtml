@@ -1,0 +1,36 @@
+<?php
+
+$weibo_state=Mage::getModel('core/session')->getData('token');
+
+$app_key=Mage::getStoreConfig('sns/sns_weibo/app_key');
+$app_secret=Mage::getStoreConfig('sns/sns_weibo/app_secret');
+$payment_partnerid=Mage::getStoreConfig('sns/sns_weibo/payment_partnerid');
+
+$pid=$payment_partnerid;
+$oid="000".date('his');
+$order_id = $pid.$oid;
+$amount = 1; 
+$desc = '在XX游戏中支付（1/100） 微币';
+echo $order_id;
+$snsweibo=Mage::getModel('sns/sns');
+$data = $snsweibo->pay_get_token( $order_id, $amount,$desc,$weibo_state['access_token'],$app_secret);
+if(!isset($data['error_code'])){
+	$token=$data['token'];
+	$order_uid=$data['order_uid'];
+	$return_url=Mage::getUrl('sns/weibo/paymentsuccess');
+	$version="1.0";
+}else{
+	print_r($data);
+}
+?>
+<form method="POST" action="<?php echo $snsweibo->getPaymentPayUrl(); ?>">
+	<input type="text" name="return_url" value="<?php echo $return_url; ?>" />
+	<input type="text" name="order_id" value="<?php echo $order_id; ?>" />
+	<input type="text" name="order_uid" value="<?php echo $order_uid; ?>" />
+	<input type="text" name="desc" value="<?php echo $desc; ?>" />
+	<input type="text" name="appkey" value="<?php echo $app_key; ?>" />
+	<input type="text" name="amount" value="<?php echo $amount; ?>" />
+	<input type="text" name="version" value="<?php echo $version; ?>" />
+	<input type="text" name="token" value="<?php echo $token; ?>" />
+	<button type="submit" >Submit</button>
+</form>
