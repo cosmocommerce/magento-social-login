@@ -6,6 +6,7 @@ Support social logins:
 * Tencent QQ
 
 If you have trouble to choose the type please contact payment@cosmocommerce.com 
+
 Our QQ group no. is: 290990851
 
 This module has the following requirements:

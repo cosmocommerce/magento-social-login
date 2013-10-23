@@ -1,4 +1,4 @@
-code                                   app/code/community/CosmoCommerce/Sns
+Sns                                   app/code/community/CosmoCommerce/Sns
 frontend/template      app/design/frontend/base/default/template/sns
 sns.xml     app/design/frontend/base/default/layout/sns.xml
 CosmoCommerce_Sns.xml                          app/etc/modules/CosmoCommerce_Sns.xml
