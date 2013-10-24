@@ -36,7 +36,7 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
 			error_reporting(E_ALL);
 			ini_set('display_errors', true);
 		}
-		$callback=Mage::getUrl('sns/callback/weibo/');
+		$callback=Mage::getUrl('sns/callback/weibo/',array('_secure'=>true));  
 
 		$snsweibo=Mage::getModel('sns/sns');
 
@@ -136,7 +136,7 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
 			error_reporting(E_ALL);
 			ini_set('display_errors', true);
 		}
-		$callback=Mage::getUrl('sns/callback/qq');
+		$callback=Mage::getUrl('sns/callback/qq/',array('_secure'=>true));  
        
 		$snsweibo=Mage::getModel('sns/tweibo');
 

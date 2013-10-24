@@ -68,7 +68,7 @@ class CosmoCommerce_Sns_WeiboController extends Mage_Core_Controller_Front_Actio
 			error_reporting(E_ALL);
 			ini_set('display_errors', true);
 		}
-		$callback=Mage::getUrl('sns/callback/weibo/');
+		$callback=Mage::getUrl('sns/callback/weibo/',array('_secure'=>true)); 
 		
 		$snsweibo=Mage::getModel('sns/sns');
 		
