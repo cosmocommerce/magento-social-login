@@ -185,9 +185,9 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
                 
                 $customer=Mage::getModel('customer/customer');
                 $customer->setWebsiteId(Mage::app()->getStore()->getWebsiteId());
-                $customer->loadByEmail($openid."@".Mage::app()->getStore()->getWebsiteId().".weibo.com"); 
+                $customer->loadByEmail($openid."@".Mage::app()->getStore()->getWebsiteId().".qq.com"); 
                 if(!$customer->getId()){ 
-                    $customer->setEmail($openid."@".Mage::app()->getStore()->getWebsiteId().".weibo.com");
+                    $customer->setEmail($openid."@".Mage::app()->getStore()->getWebsiteId().".qq.com");
                     $customer->setFirstname("qq");
                     //$customer->setAvatar($profile_image_url);
                     $customer->setLastname($userdata->nickname);
