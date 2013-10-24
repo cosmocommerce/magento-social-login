@@ -46,6 +46,13 @@ source ~/.profile
 
 or if you want to force update(ignore your exist code change) please do: modman update magento-social-login --force
 
+## Uninstall ##
+
+1 Switch to root folder of your magento.
+
+2 modman remove magento-social-login
+
+
 ## Documentation ##
 
  - How to use this module
