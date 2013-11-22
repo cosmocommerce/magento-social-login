@@ -2,7 +2,7 @@
 <config>
     <modules>
         <CosmoCommerce_Sns>
-            <version>0.1.0</version>
+            <version>0.3.0</version>
         </CosmoCommerce_Sns>
     </modules>
     <frontend>
