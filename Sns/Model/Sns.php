@@ -263,7 +263,7 @@ class CosmoCommerce_Sns_Model_Sns extends Mage_Core_Model_Abstract
 		curl_setopt($ci, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ci, CURLOPT_ENCODING, "");
 		curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, $this->ssl_verifypeer);
-		curl_setopt($ci, CURLOPT_SSL_VERIFYHOST, 1);
+		curl_setopt($ci, CURLOPT_SSL_VERIFYHOST, 2);
 		curl_setopt($ci, CURLOPT_HEADERFUNCTION, array($this, 'getHeader'));
 		curl_setopt($ci, CURLOPT_HEADER, FALSE);
 

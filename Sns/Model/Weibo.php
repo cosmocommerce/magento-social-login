@@ -557,20 +557,6 @@ class CosmoCommerce_Sns_Model_Weibo extends Mage_Core_Model_Abstract
 		return $this->oauth->post( 'statuses/repost', $params  );
 	}
 
-	/**
-	 * 删除一条微博
-	 * 
-	 * 根据ID删除微博消息。注意：只能删除自己发布的信息。
-	 * <br />对应API：{@link http://open.weibo.com/wiki/2/statuses/destroy statuses/destroy}
-	 * 
-	 * @access public
-	 * @param int $id 要删除的微博ID
-	 * @return array
-	 */
-	public function delete( $id )
-	{
-		return $this->destroy( $id );
-	}
 
 	/**
 	 * 删除一条微博
