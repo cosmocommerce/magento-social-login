@@ -86,9 +86,13 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
 			$province = $data['province'];
 			$screen_name = $data['screen_name'];
 			$name = $data['name'];
-			$profile_image_url = $data['profile_image_url'];
+			//$profile_image_url = $data['profile_image_url'];
 			
-			
+			if(isset($uid_get['error'])){
+				Mage::getSingleton('core/session')->addError('新浪微博审核接入中，需要审核通过本app才能正常使用');
+				$this->_redirect('sns/callback/fail');
+				return;
+			}
 			
             $customer = Mage::getModel('customer/customer')
               ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
