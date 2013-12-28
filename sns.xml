@@ -1,6 +1,28 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
 
+    <sns_weibo_paymentsuccess translate="label">
+        <label>Customer Weibo Payment Form</label>
+        <!-- Mage_Customer -->
+        <reference name="root"> 
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+		
+        <reference name="content">
+            <block type="sns/payment" name="sns_payment" template="sns/paymentsuccess.phtml" />
+        </reference>
+    </sns_weibo_paymentsuccess>
+    <sns_weibo_payment translate="label">
+        <label>Customer Weibo Payment Form</label>
+        <!-- Mage_Customer -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+		
+        <reference name="content">
+            <block type="sns/payment" name="sns_payment" template="sns/payment.phtml" />
+        </reference>
+    </sns_weibo_payment>
     <sns_callback_weibo translate="label">
         <label>Customer Weibo Login Form</label>
         <!-- Mage_Customer -->
