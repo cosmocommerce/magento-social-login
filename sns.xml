@@ -1,30 +1,6 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
 
-    <sns_weibo_paymentsuccess translate="label">
-        <label>Customer Weibo Payment Form</label>
-        <!-- Mage_Customer -->
-        <reference name="root"> 
-            <action method="setTemplate"><template>page/1column.phtml</template></action>
-        </reference>
-		
-        <reference name="content">
-            <block type="sns/payment" name="sns_payment" template="sns/paymentsuccess.phtml" />
-        </reference>
-    </sns_weibo_paymentsuccess>
-    <sns_weibo_payment translate="label">
-        <label>Customer Weibo Payment Form</label>
-        <!-- Mage_Customer -->
-        <reference name="root">
-            <action method="setTemplate"><template>page/1column.phtml</template></action>
-        </reference>
-		
-        <reference name="content">
-            <block type="sns/payment" name="sns_payment" template="sns/payment.phtml" />
-        </reference>
-    </sns_weibo_payment>
-
-
     <sns_callback_weibo translate="label">
         <label>Customer Weibo Login Form</label>
         <!-- Mage_Customer -->
@@ -87,4 +63,33 @@
             <block type="core/template" name="customer_form_login" template="sns/success.phtml" />
         </reference>
     </sns_callback_success>
+	
+    <sns_show_index translate="label">
+        <reference name="left">
+            <block type="cms/block" name="cms_customer_links" before="customer_links">
+                <action method="setBlockId"><block_id>customer_links</block_id></action>
+            </block>
+        </reference>
+		
+		<reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="blog/show" name="blog" template="sns/show.phtml"/>
+        </reference>
+    </sns_show_index>
+	
+    <sns_show_success translate="label">
+        <label>Catalog Category (Non-Anchor)</label>
+        <reference name="content">
+            <block type="catalog/navigation" name="catalog.show"  template="sns/usershow.phtml"/>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/pinterest.phtml</template></action>
+        </reference>
+        <reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/jquery.masonry.min.js</name><params/></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.infinitescroll.min.js</name><params/></action>
+        </reference>
+    </sns_show_success>
 </layout>

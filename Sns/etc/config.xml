@@ -35,6 +35,22 @@
         </routers>
     </admin>
     <adminhtml>
+		<menu>
+			<cosmocommerce>               
+				<children>
+					<items module="sns">
+						<title>Login Logs</title>
+						<sort_order>0</sort_order>
+						<action>sns/adminhtml_sns</action>
+					</items>
+					<userimages module="sns">
+						<title>User Photos</title>
+						<sort_order>0</sort_order>
+						<action>sns/adminhtml_photo</action>
+					</userimages>
+				</children>
+			</cosmocommerce>
+		</menu>
 		<acl>
 			<resources>
 				<all>
