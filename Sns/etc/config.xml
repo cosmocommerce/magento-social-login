@@ -2,7 +2,7 @@
 <config>
     <modules>
         <CosmoCommerce_Sns>
-            <version>0.1.0</version>
+            <version>0.4.0</version>
         </CosmoCommerce_Sns>
     </modules>
     <frontend>
@@ -22,6 +22,15 @@
                 </sns>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <CosmoCommerce_Sns>
+                    <files>
+                        <default>CosmoCommerce_Sns.csv</default>
+                    </files>
+                </CosmoCommerce_Sns>
+            </modules>
+        </translate>
     </frontend>
     <admin>
         <routers>
@@ -73,6 +82,15 @@
 				</sns>
 			</updates>
 		</layout>
+        <translate>
+            <modules>
+                <CosmoCommerce_Sns>
+                    <files>
+                        <default>CosmoCommerce_Sns.csv</default>
+                    </files>
+                </CosmoCommerce_Sns>
+            </modules>
+        </translate>
     </adminhtml>   
     <global>
         <models>

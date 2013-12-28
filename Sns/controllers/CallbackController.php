@@ -36,7 +36,7 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
 			error_reporting(E_ALL);
 			ini_set('display_errors', true);
 		}
-		$callback=Mage::getUrl('sns/callback/weibo/');
+		$callback=Mage::getUrl('sns/callback/weibo/',array('_secure'=>true));  
 
 		$snsweibo=Mage::getModel('sns/sns');
 
@@ -86,19 +86,29 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
 			$province = $data['province'];
 			$screen_name = $data['screen_name'];
 			$name = $data['name'];
-			$profile_image_url = $data['profile_image_url'];
+			//$profile_image_url = $data['profile_image_url'];
 			
+			if(isset($uid_get['error'])){
+				Mage::getSingleton('core/session')->addError('新浪微博审核接入中，需要审核通过本app才能正常使用');
+				$this->_redirect('sns/callback/fail');
+				return;
+			}
 			
-			
-			
-			$customer=Mage::getModel('customer/customer');
-			$customer->setWebsiteId(Mage::app()->getStore()->getWebsiteId());
-			$customer->loadByEmail($uid."@".Mage::app()->getStore()->getWebsiteId().".weibo.com"); 
-			if(!$customer->getId()){ 
-				$customer->setEmail($uid."@".Mage::app()->getStore()->getWebsiteId().".weibo.com");
-				$customer->setFirstname("weibo");
+            $customer = Mage::getModel('customer/customer')
+              ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+              ->getCollection()
+              ->addAttributeToSelect('weibo_id')
+              ->addAttributeToFilter('weibo_id',$uid)->load()->getFirstItem();
+           
+			if(!($customer->getId())){ 
+				$customer->setEmail($uid."@weibo.com");
+                
+                $lastname=mb_substr($screen_name,0,1);
+                $firstname=mb_substr($screen_name,1,mb_strlen($screen_name)-1);
+				$customer->setFirstname($firstname);
 				//$customer->setAvatar($profile_image_url);
-				$customer->setLastname($screen_name);
+				$customer->setLastname($lastname);
+				$customer->setWeiboId($uid);
 				//$customer->setLocation($location);
 				//$customer->setProvince($province);
 				$customer->setPassword($token['access_token']);
@@ -136,7 +146,7 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
 			error_reporting(E_ALL);
 			ini_set('display_errors', true);
 		}
-		$callback=Mage::getUrl('sns/callback/qq');
+		$callback=Mage::getUrl('sns/callback/qq/',array('_secure'=>true));  
        
 		$snsweibo=Mage::getModel('sns/tweibo');
 
@@ -183,14 +193,22 @@ class CosmoCommerce_Sns_CallbackController extends Mage_Core_Controller_Front_Ac
            
 			if($userdata->ret==0){
                 
-                $customer=Mage::getModel('customer/customer');
-                $customer->setWebsiteId(Mage::app()->getStore()->getWebsiteId());
-                $customer->loadByEmail($openid."@".Mage::app()->getStore()->getWebsiteId().".weibo.com"); 
+                $customer = Mage::getModel('customer/customer')
+                  ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                  ->getCollection()
+                  ->addAttributeToSelect('qq_id')
+                  ->addAttributeToFilter('qq_id',$openid)->load()->getFirstItem();
+               
                 if(!$customer->getId()){ 
-                    $customer->setEmail($openid."@".Mage::app()->getStore()->getWebsiteId().".weibo.com");
-                    $customer->setFirstname("qq");
+                    $customer->setEmail($openid."@open.qq.com");
+                    
+                    
+                    $lastname=mb_substr($screen_name,0,1);
+                    $firstname=mb_substr($screen_name,1,mb_strlen($screen_name)-1);
+                    $customer->setFirstname($firstname);
                     //$customer->setAvatar($profile_image_url);
-                    $customer->setLastname($userdata->nickname);
+                    $customer->setLastname($lastname);
+                    $customer->setQqId($openid);
                     //$customer->setLocation($location);
                     //$customer->setProvince($province);
                     $customer->setPassword($token);

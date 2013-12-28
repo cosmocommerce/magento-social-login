@@ -19,7 +19,7 @@ class CosmoCommerce_Sns_QqController extends Mage_Core_Controller_Front_Action
 			error_reporting(E_ALL);
 			ini_set('display_errors', true);
 		}
-		$callback=Mage::getUrl('sns/callback/qq');
+		$callback=Mage::getUrl('sns/callback/qq/',array('_secure'=>true));  
 		
 		$snsweibo=Mage::getModel('sns/tweibo');
 		
